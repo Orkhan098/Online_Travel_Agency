@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <script src="https://kit.fontawesome.com/51c27063d2.js" crossorigin="anonymous"></script>
+    <style>
+        table,tr,th,td{
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div align="center">
+
+
+    <h1 style="color:darkblue">Admin Page</h1>
+    <a href="new">Create New Tour</a><br><br><br>
+
+    <table border="1px" cellpadding="8">
+        <tr>
+            <th>Tour_Id</th>
+            <th>Tour_Desc</th>
+            <th>Tour_bDate</th>
+            <th>Tour_eDate</th>
+            <th>Tour_Price</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+
+        <tr th:each="tour: ${listTours}">
+            <td th:text="${tour.id}"></td>
+            <td th:text="${tour.description}" ></td>
+            <td th:text="${tour.beginDate}"></td>
+            <td th:text="${tour.endDate}"></td>
+            <td th:text="${tour.price}"></td>
+            <td><a th:href=" @{'/edit/' + ${tour.id}}"><i class="fas fa-edit"></i></a></td>
+            <td><a th:href=" @{'/delete/' + ${tour.id}}"><i class="fas fa-trash-alt"></i></a></td>
+
+        </tr>
+
+    </table>
+    <br><br><br>
+
+    <table  border="1px" cellpadding="8">
+        <tr>
+            <th>User Name</th>
+            <th>User Surname</th>
+            <th>User Password</th>
+            <th>User Tour</th>
+        </tr>
+
+        <tr th:each="user:${listUsers}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.surname}"></td>
+            <td th:text="${user.password}"></td>
+            <td></td>
+
+        </tr>
+    </table>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Tours For User</title>
+    <script src="https://kit.fontawesome.com/51c27063d2.js" crossorigin="anonymous"></script>
+    <style>
+        table,tr,th,td{
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div align="center">
+
+
+    <h1 style="color:darkblue">List of Tours For User</h1>
+
+    <table border="1px" cellpadding="8">
+        <tr>
+            <th>Tour_Desc</th>
+            <th>Tour_bDate</th>
+            <th>Tour_eDate</th>
+            <th>Tour_Price</th>
+            <th>Select</th>
+
+        </tr>
+
+        <tr th:each="tour: ${listTours}">
+            <td th:text="${tour.description}" ></td>
+            <td th:text="${tour.beginDate}"></td>
+            <td th:text="${tour.endDate}"></td>
+            <td th:text="${tour.price}"></td>
+            <td><a th:href=" @{'/select/' + ${tour.id}}"><i class="fas fa-hand-pointer"></i></a></td>
+        </tr>
+
+    </table>
+</body>
+</html>
